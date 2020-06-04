@@ -1,3 +1,36 @@
 <resources>
-    <string name="app_name">Assignment</string>
+    <string name="app_name">Healthy Boba</string>
+
+    <string-array name="bubbletea">
+        <item>Almond Milk Tea</item>
+        <item>Caramel Milk Tea</item>
+        <item>Coffee Milk Tea</item>
+        <item>Earl Gray Milk Tea</item>
+        <item>Matcha Milk Tea</item>
+        <item>Milk Tea</item>
+        <item>Taro Milk Tea</item>
+        <item>Thai Milk Tea</item>
+    </string-array>
+
+    <string-array name="price">
+        <item>Price: $4.50</item>
+        <item>Price: $4.50</item>
+        <item>Price: $3.90</item>
+        <item>Price: $4.50</item>
+        <item>Price: $3.90</item>
+        <item>Price: $3.90</item>
+        <item>Price: $4.50</item>
+        <item>Price: $4.50</item>
+    </string-array>
+
+    <string-array name="calories">
+        <item>Calories: 306</item>
+        <item>Calories: 306</item>
+        <item>Calories: 306</item>
+        <item>Calories: 306</item>
+        <item>Calories: 306</item>
+        <item>Calories: 306</item>
+        <item>Calories: 306</item>
+        <item>Calories: 306</item>
+    </string-array>
 </resources>

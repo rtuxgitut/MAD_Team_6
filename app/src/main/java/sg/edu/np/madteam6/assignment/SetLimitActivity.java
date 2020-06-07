@@ -6,22 +6,24 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Tracker extends AppCompatActivity {
-    //Defining variables
+public class SetLimitActivity extends AppCompatActivity {
+    //Defining variable
     final String TAG = "bbt app";
-    TextView textView;
+    public static final String EXTRA_NUMBER = "sg.edu.np.madteam6.EXTRA_NUMBER";
+    Button cfmButton;
+    Button cancelButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tracker);
+        setContentView(R.layout.activity_set_limit);
         //creating bottom navigation bar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         //setting page as tracker
@@ -64,25 +66,49 @@ public class Tracker extends AppCompatActivity {
             }
         });
 
-        textView = findViewById(R.id.displayLimit);
+        cfmButton = findViewById(R.id.confirmButton);
+        cancelButton = findViewById(R.id.cancelButton);
 
-        Intent intent = getIntent();
-        //Store value received from input in SetLimitActivity
-        double number = intent.getDoubleExtra(SetLimitActivity.EXTRA_NUMBER, 0.00);
-
-        //Default text to display money limit
-        TextView limitView = (TextView) findViewById(R.id.displayLimit);
-        limitView.setText("$0 out of $" + number);
-        configureSetLimitButton();
-    }
-
-    private void configureSetLimitButton(){
-        Button nextButton = (Button) findViewById(R.id.limitButton);
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        //Stores input collected if clicked
+        cfmButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Allows user to go to the Set Limits page
-                startActivity(new Intent(Tracker.this, SetLimitActivity.class));
+                confirmLimit();
+            }
+        });
+
+        //Abandons input if clicked
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cancelSetLimit();
+            }
+        });
+
+    }
+
+    public void confirmLimit(){
+        EditText editText = (EditText) findViewById(R.id.spentLimitInput);
+        double number = Integer.parseInt(editText.getText().toString()); //Parses the data to int format
+        Button cfmButton = (Button) findViewById(R.id.confirmButton);
+        cfmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); //Finishes activity
+            }
+        });
+
+        Intent intent = new Intent(this, Tracker.class);
+        intent.putExtra(EXTRA_NUMBER, number); //Transfers int data over to Tracker activity
+        startActivity(intent);
+    }
+
+    public void cancelSetLimit(){
+        Button cclButton = (Button) findViewById(R.id.cancelButton);
+        cclButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); //Finishes activity
             }
         });
     }

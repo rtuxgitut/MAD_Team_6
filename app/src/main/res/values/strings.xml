@@ -1,36 +1,69 @@
 <resources>
     <string name="app_name">Healthy Boba</string>
 
-    <string-array name="bubbletea">
-        <item>Almond Milk Tea</item>
-        <item>Caramel Milk Tea</item>
-        <item>Coffee Milk Tea</item>
-        <item>Earl Gray Milk Tea</item>
-        <item>Matcha Milk Tea</item>
+    <string-array name="brands">
+        <item>Koi</item>
+        <item>Gong Cha</item>
+        <item>LiHO</item>
+    </string-array>
+
+    <string-array name="koi">
         <item>Milk Tea</item>
-        <item>Taro Milk Tea</item>
-        <item>Thai Milk Tea</item>
+        <item>Caramel Milk Tea</item>
+        <item>Golden Bubble Milk Tea</item>
+        <item>Honey Milk Tea</item>
+        <item>Ovaltine</item>
     </string-array>
 
-    <string-array name="price">
-        <item>Price: $4.50</item>
-        <item>Price: $4.50</item>
-        <item>Price: $3.90</item>
-        <item>Price: $4.50</item>
-        <item>Price: $3.90</item>
-        <item>Price: $3.90</item>
-        <item>Price: $4.50</item>
-        <item>Price: $4.50</item>
+    <string-array name="gongcha">
+        <item>Milk Tea</item>
+        <item>Caramel Milk Tea</item>
+        <item>Brown Sugar Milk Tea</item>
+        <item>Winter Melon Milk Tea</item>
+        <item>Strawberry Milk Tea</item>
+        <item>Earl Grey Milk Tea</item>
     </string-array>
 
-    <string-array name="calories">
-        <item>Calories: 306</item>
-        <item>Calories: 306</item>
-        <item>Calories: 306</item>
-        <item>Calories: 306</item>
-        <item>Calories: 306</item>
-        <item>Calories: 306</item>
-        <item>Calories: 306</item>
-        <item>Calories: 306</item>
+    <string-array name="liho">
+        <item>Milk Tea</item>
+        <item>Caramel Milk Tea</item>
+        <item>Earl Grey Milk Tea</item>
+        <item>Brown Sugar Milk Tea</item>
+        <item>Taro Milk</item>
+        <item>Golden Avocado</item>
+    </string-array>
+
+    <string-array name="koicalories">
+        <item>Calories: 265-315 kcal</item>
+        <item>Calories: 270-315 kcal</item>
+        <item>Calories: 290-330 kcal</item>
+        <item>Calories: 290-330 kcal</item>
+        <item>Calories: 290-330 kcal</item>
+    </string-array>
+
+    <string-array name="gccalories">
+        <item>Calories: 265-315 kcal</item>
+        <item>Calories: 270-315 kcal</item>
+        <item>Calories: 290-390 kcal</item>
+        <item>Calories: 150-175 kcal</item>
+        <item>Calories: 290-330 kcal</item>
+        <item>Calories: 315-355 kcal</item>
+    </string-array>
+
+    <string-array name="lihocalories">
+        <item>Calories: 265-315 kcal</item>
+        <item>Calories: 270-315 kcal</item>
+        <item>Calories: 315-355 kcal</item>
+        <item>Calories: 290-390 kcal</item>
+        <item>Calories: 290-330 kcal</item>
+        <item>Calories: 290-330 kcal</item>
+    </string-array>
+
+    <string-array name="topping_cal">
+        <item>Pearl: 148 kcal</item>
+        <item>White Pearl: 28 kcal</item>
+        <item>Aloe Vera: 16 kcal</item>
+        <item>Coconut Jelly: 45 kcal</item>
+        <item>Taro Q: 45 kcal</item>
     </string-array>
 </resources>

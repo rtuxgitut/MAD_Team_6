@@ -66,4 +66,21 @@
         <item>Coconut Jelly: 45 kcal</item>
         <item>Taro Q: 45 kcal</item>
     </string-array>
+
+    <string name="username">Name</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="register">Register here</string>
+    <string name="toggleOn">show</string>
+    <string name="toggleOff">hide</string>
+    <string name="re_enter">Re-enter password</string>
+    <string name="enterName">Enter your name</string>
+    <string name="accountCreation">Create Account</string>
+    <string name="welcomeMsg">Welcome to Healthy Boba</string>
+
+    <string name="home">Home</string>
+    <string name="menu">Menu</string>
+    <string name="location">Location</string>
+    <string name="tracker">Tracker</string>
+
 </resources>

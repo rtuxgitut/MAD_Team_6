@@ -60,11 +60,7 @@
     </string-array>
 
     <string-array name="topping_cal">
-        <item>Pearl: 148 kcal</item>
-        <item>White Pearl: 28 kcal</item>
-        <item>Aloe Vera: 16 kcal</item>
-        <item>Coconut Jelly: 45 kcal</item>
-        <item>Taro Q: 45 kcal</item>
+        <item>Pearl: 148 kcal\nWhite Pearl: 28 kcal\nAloe Vera: 16 kcal\nCoconut Jelly: 45 kcal\nTaro Q: 45 kcal</item>
     </string-array>
 
     <string name="username">Name</string>

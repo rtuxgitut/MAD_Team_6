@@ -14,12 +14,24 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Menu extends AppCompatActivity {
     RecyclerView recyclerView;
+
+    String brand[];
+    int brandlogo[] = {R.raw.koilogo, R.raw.gongchalogo, R.raw.lihologo};
+
     final String TAG = "bbt app";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        recyclerView = findViewById(R.id.recyclerView);
+
+        brand = getResources().getStringArray(R.array.brands);
+
+        MenuAdapter menuAdapter = new MenuAdapter(this, brand, brandlogo);
+        recyclerView.setAdapter(menuAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         //creating bottom navigation bar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         //setting page as menu
@@ -59,6 +71,8 @@ public class Menu extends AppCompatActivity {
                 return false;
             }
         });
+
+
 
     }
 }

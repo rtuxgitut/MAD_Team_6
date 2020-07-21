@@ -78,5 +78,8 @@
     <string name="menu">Menu</string>
     <string name="location">Location</string>
     <string name="tracker">Tracker</string>
+    <string name="title_activity_liho">Map</string>
+    <string name="title_activity_gong_cha">Map</string>
+    <string name="title_activity_koi">Map</string>
 
 </resources>

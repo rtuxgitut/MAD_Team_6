@@ -49,7 +49,7 @@ public class Tracker extends AppCompatActivity {
                     case R.id.location:
 
                         startActivity(new Intent(getApplicationContext()
-                                , Direction.class));
+                                , Liho.class));
                         overridePendingTransition(0,0);
                         Log.v(TAG,"going to Location");
                         return true;

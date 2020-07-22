@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="LihoStore">
+        <item>J-cube</item>
+        <item>Imm</item>
+        <item>Jem</item>
+        <item>Clementi Mall</item>
+        <item>West Coast plaza</item>
+        <item>King albert Park</item>
+        <item>Bukit batok</item>
+        <item>Bukit Gombak</item>
+        <item>Nus</item>
+        <item>Jurong Point</item>
+        <item>Star-Vista</item>
+        <item>Clementi Blk 442</item>
+        <item>Ntu Hss</item>
+        <item>Bukit Panjang Plaza</item>
+        <item>Lot 1</item>
+        <item>Queensway SHopping centre</item>
+        <item>GreenRidge Shopping Centre</item>
+        <item>Junction 10</item>
+        <item>Bukit-timah plaza</item>
+
+    </string-array>
+
+    <string-array name="LihoAddress">
+        <item> 2 Jurong East Central 1, #03-13 JCube, Singapore 609731</item>
+        <item> #01-K12 IMM, 2 Jurong East Street 21, 609601</item>
+        <item>50 Jurong Gateway Rd, #B1-30 Jem, Singapore 608549</item>
+        <item>3155 commonwealth, Singapore 129588</item>
+        <item>154 West Coast Rd, #B1 - 54, Singapore 127371</item>
+        <item>9 King Albert Park, #01-35, Singapore 598332</item>
+        <item>10 Bukit Batok Central, #01-02, Singapore 659959</item>
+        <item>802 Bukit Batok West Ave 5, #01-01, Singapore 659083</item>
+        <item>National University of Singapore,21 Lower Kent Ridge Road,Level 2 Yusof Ishak House, 119077</item>
+        <item>1 Jurong West Central 2 Jurong Point # B1-09, 648886</item>
+        <item>1 Vista Exchange Green, #B1-39, Singapore 138617</item>
+        <item>442 Clementi Ave 3, #01-109, Singapore 120442</item>
+        <item> School of Humanities, Level 1, Nanyang Technological University,14 Nanyang Drive,637332</item>
+        <item>1 Jelebu Road, Bukit Panjang Rd, #01-21, Singapore 677743</item>
+        <item>21 Choa Chu Kang Avenue 4 B1, K30, 689812</item>
+        <item>1 Queensway, #01-K58 Shopping Centre, Singapore 149053</item>
+        <item>524A, #02-10 Jelapang Rd, Greenridge Shopping Centre, 671524</item>
+        <item>1 Woodlands Rd, #01-26 Junction 10, Singapore 677899</item>
+        <item>1 Jln Anak Bukit, Singapore 588996</item>
+
+    </string-array>
+
+    <string-array name="KoiStore">
+        <item>sdsds</item>
+        <item>sdsds</item>
+        <item>sdsds</item>
+        <item>sdsds</item>
+        <item>sdsds</item>
+        <item>sdsds</item>
+        <item>sdsds</item>
+        <item>sdsds</item>
+    </string-array>
+
+    <string-array name="KoiAddress">
+        <item>sdsds</item>
+        <item>sdsds</item>
+        <item>sdsds</item>
+        <item>sdsds</item>
+        <item>sdsds</item>
+        <item>sdsds</item>
+        <item>sdsds</item>
+        <item>sdsds</item>
+    </string-array>
+
+    <string-array name="GongChaStore">
+    <item>222</item>
+    <item>222</item>
+    <item>222</item>
+    <item>222</item>
+    <item>222</item>
+    <item>222</item>
+    <item>222</item>
+    <item>222</item>
+    <item>222</item>
+    <item>222</item>
+</string-array>
+
+    <string-array name="GongChaAddress">
+        <item>222</item>
+        <item>222</item>
+        <item>222</item>
+        <item>222</item>
+        <item>222</item>
+        <item>222</item>
+        <item>222</item>
+        <item>222</item>
+        <item>222</item>
+        <item>222</item>
+    </string-array>
+</resources>

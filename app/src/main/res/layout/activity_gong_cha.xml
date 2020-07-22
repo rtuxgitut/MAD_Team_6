@@ -88,11 +88,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="391dp"
-        android:layout_height="532dp"
-        android:layout_marginBottom="140dp"
+        android:layout_width="407dp"
+        android:layout_height="515dp"
+        android:layout_marginBottom="160dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline

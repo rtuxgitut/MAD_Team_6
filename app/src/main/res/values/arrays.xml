@@ -46,51 +46,51 @@
 
     </string-array>
 
-    <string-array name="KoiStore">
-        <item>sdsds</item>
-        <item>sdsds</item>
-        <item>sdsds</item>
-        <item>sdsds</item>
-        <item>sdsds</item>
-        <item>sdsds</item>
-        <item>sdsds</item>
-        <item>sdsds</item>
+    <string-array name="GcStore">
+        <item>Westgate</item>
+        <item>chijmes</item>
+        <item>313@somerset</item>
+        <item>Eunos SingPost Centre</item>
+        <item>Plaza Singapura</item>
+        <item>703 Ang Mo Kio Ave 3</item>
+        <item>190 Lor 6 Toa Payoh</item>
+        <item>Bugis Junction</item>
+        <item>Woodlands Square</item>
+        <item>Ngee Ann City</item>
+        <item>Vivo City</item>
+        <item>Funan Mall</item>
+        <item>Northpoint City</item>
+        <item>Simei MRT</item>
+        <item>Jurong Point</item>
+        <item>Burlington Square</item>
+        <item>Compass One</item>
+        <item>NEX</item>
+        <item>One Raffles Place</item>
+        <item>Marina Square</item>
     </string-array>
 
-    <string-array name="KoiAddress">
-        <item>sdsds</item>
-        <item>sdsds</item>
-        <item>sdsds</item>
-        <item>sdsds</item>
-        <item>sdsds</item>
-        <item>sdsds</item>
-        <item>sdsds</item>
-        <item>sdsds</item>
+    <string-array name="GcAddress">
+        <item>3 Gateway Dr, #02-27 Westgate, Singapore 608532</item>
+        <item>50 Stamford Rd, #01-01 Lee Kong Chian Of Business, Singapore 178899</item>
+        <item>313 Orchard Rd, #01-37, Singapore 238895</item>
+        <item>#01-141A/141B, SingPost Centre, 10 Eunos Rd 8, Singapore 408600</item>
+        <item>68 Orchard Rd, #B1-K7 Plaza, Singapore 238839</item>
+        <item>703 Ang Mo Kio Ave 3, #01-2531, Singapore 560703</item>
+        <item>190 Lor 6 Toa Payoh, #01-546, Singapore 310190</item>
+        <item>200 Victoria St, #03-08 Bugis Junction, Singapore 188021</item>
+        <item>1 Woodlands Square, #02-K10 Causeway Point, Singapore 738099</item>
+        <item>Orchard Rd, 391ABasement 2 (Food Hall) #08-7 Takashimaya Department Store</item>
+        <item>#01-111, Vivo City, 1 Harbourfront Walk, 098585</item>
+        <item>109 North Bridge Rd, #02-01 Funan Mall, Singapore 179097</item>
+        <item>930 Yishun Ave 2, Northpoint City North Wing, #01-06, Singapore 769098</item>
+        <item>30 Simei Street 3, #01-04 Simei MRT, Singapore 529888</item>
+        <item>1 Jurong West Central 2 Jurong Point # B1-09, 648886</item>
+        <item>#01-53, Burlington Square, 175 Bencoolen Street, 189649</item>
+        <item>1 Sengkang Square, #02-40/41, Singapore 545078</item>
+        <item>23 Serangoon Central, #B1-44 NEX Shopping Mall, Singapore 556083</item>
+        <item>1 Raffles Place, #B1-39, Singapore 048616</item>
+        <item>6 Raffles Blvd, #03-212 Marina Square, Singapore 039594</item>
     </string-array>
 
-    <string-array name="GongChaStore">
-    <item>222</item>
-    <item>222</item>
-    <item>222</item>
-    <item>222</item>
-    <item>222</item>
-    <item>222</item>
-    <item>222</item>
-    <item>222</item>
-    <item>222</item>
-    <item>222</item>
-</string-array>
 
-    <string-array name="GongChaAddress">
-        <item>222</item>
-        <item>222</item>
-        <item>222</item>
-        <item>222</item>
-        <item>222</item>
-        <item>222</item>
-        <item>222</item>
-        <item>222</item>
-        <item>222</item>
-        <item>222</item>
-    </string-array>
 </resources>

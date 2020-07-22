@@ -1,13 +1,17 @@
 package sg.edu.np.madteam6.assignment;
 
 import android.content.Context;
+import android.provider.Telephony;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.ExtractedTextRequest;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class GongChaAdapter extends RecyclerView.Adapter<GongChaAdapter.MyViewholder> {
     Context context;
@@ -16,8 +20,9 @@ public class GongChaAdapter extends RecyclerView.Adapter<GongChaAdapter.MyViewho
 
     public GongChaAdapter(Context context, String store[],String address[]){
         this.store = store;
-        this.context = context;
         this.address = address;
+        this.context = context;
+
     }
     @Override
     public MyViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,8 +39,8 @@ public class GongChaAdapter extends RecyclerView.Adapter<GongChaAdapter.MyViewho
     @Override
     public int getItemCount() {
         return store.length;
-    }
 
+    }
     class MyViewholder extends  RecyclerView.ViewHolder{
         TextView Store;
         TextView Address;
@@ -44,6 +49,7 @@ public class GongChaAdapter extends RecyclerView.Adapter<GongChaAdapter.MyViewho
             super(itemView);
             Store = (TextView) itemView.findViewById(R.id.gongChaStore);
             Address = (TextView) itemView.findViewById(R.id.gongChaAddress);
+
         }
     }
 }

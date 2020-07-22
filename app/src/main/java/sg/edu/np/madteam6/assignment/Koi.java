@@ -6,11 +6,13 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,29 +22,31 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.TimeoutException;
+
 public class Koi extends AppCompatActivity {
     RecyclerView recyclerView;
-    String store[];
-    String address[];
+    ArrayList<String> nameList;
     KoiAdapter adapter;
-
     final String TAG = "bbt app";
+TextView result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_koi);
-        recyclerView = findViewById(R.id.recyclerView);
+        nameList = new ArrayList<>();
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        getWebsite();
 
-        store = getResources().getStringArray(R.array.KoiStore);
-        address =getResources().getStringArray(R.array.KoiAddress);
-
-
-        adapter = new KoiAdapter(this,store,address);
-        recyclerView.setAdapter(adapter);
 
         //creating bottom navigation bar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -88,8 +92,46 @@ public class Koi extends AppCompatActivity {
 
     }
 
+    void getWebsite() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final StringBuilder builder = new StringBuilder();
+                try {
+                    Document doc = (Document) Jsoup.connect("https://www.koithe.com/en/global/koi-singapore").get();
+                    Elements links = doc.select("div.titlebox");
+
+                    for(Element link: links){
+                        nameList.add(builder.append("\n").append(link.text()).toString());
+                    }
+                    /**for(int i = 1;i < links.size(); i++){
+                        nameList.add(builder.append("\n").append(links.get(i).text()).toString());
+
+                    }**/
 
 
+
+                } catch (IOException e) {
+                    builder.append("Error : ").append(e.getMessage()).append("\n");
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        recyclerView = findViewById(R.id.recyclerView);
+
+                        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(Koi.this));
+
+                        adapter = new KoiAdapter(Koi.this,nameList);
+
+                        recyclerView.setAdapter(adapter);
+
+                    }
+                });
+            }
+        }).start();
+
+    }
 
     public void sendMessageliho(View view) {
         Intent intent = new Intent(Koi.this, Liho.class);

@@ -20,11 +20,19 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class GongCha extends AppCompatActivity {
     RecyclerView recyclerView;
-    String store[];
+    String shop[];
     String address[];
-    KoiAdapter adapter;
+    GongChaAdapter adapter;
     final String TAG = "bbt app";
 
     @Override
@@ -32,15 +40,11 @@ public class GongCha extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gong_cha);
         recyclerView = findViewById(R.id.recyclerView);
-
+        shop = getResources().getStringArray(R.array.GcStore);
+        address = getResources().getStringArray(R.array.GcAddress);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        store = getResources().getStringArray(R.array.GongChaStore);
-        address =getResources().getStringArray(R.array.GongChaAddress);
-
-
-        adapter = new KoiAdapter(this,store,address);
+        adapter = new GongChaAdapter(this,shop,address);
         recyclerView.setAdapter(adapter);
 
         //creating bottom navigation bar

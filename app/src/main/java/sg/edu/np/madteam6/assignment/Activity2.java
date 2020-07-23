@@ -37,7 +37,7 @@ public class Activity2 extends AppCompatActivity {
         //creating bottom navigation bar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         //setting page as home
-        bottomNavigationView.setSelectedItemId(R.id.location);
+        bottomNavigationView.setSelectedItemId(R.id.menu);
         //setting up listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

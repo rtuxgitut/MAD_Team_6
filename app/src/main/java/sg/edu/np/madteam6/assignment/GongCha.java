@@ -30,9 +30,8 @@ import java.util.ArrayList;
 
 public class GongCha extends AppCompatActivity {
     RecyclerView recyclerView;
-    String shop[];
-    String address[];
-    ArrayList<String> nameList;
+    ArrayList<String> addressList = new ArrayList<>();
+    ArrayList<String> nameList = new ArrayList<>();
     GongChaAdapter adapter;
     final String TAG = "bbt app";
 
@@ -87,18 +86,23 @@ public class GongCha extends AppCompatActivity {
 
     void getWebsite() {
         new Thread(new Runnable() {
-            @Override
             public void run() {
                 final StringBuilder builder = new StringBuilder();
                 try {
-                    Document doc = (Document) Jsoup.connect("http://www.gong-cha-sg.com/stores/").get();
-                    Elements links = doc.select("div.addr-sec");
+                    Document doc = (Document) Jsoup.connect("https://shopsinsg.com/gong-cha-bubble-tea-shops-in-singapore.html").get();
+                    Elements links = doc.select("p>strong");
+                    Elements tests = doc.select("h2~*");
                     for(Element link: links){
                         nameList.add(builder.append("\n").append(link.text()).toString());
-                        builder.delete(0,builder.length());
-
+                        builder.delete(0, builder.length());
                     }
 
+                    for(Element link: tests){
+                        {
+                            addressList.add(builder.append("\n").append(link.text()).toString());
+                            builder.delete(0, builder.length());
+                        }
+                    }
                 } catch (IOException e) {
                     builder.append("Error : ").append(e.getMessage()).append("\n");
                 }
@@ -109,8 +113,8 @@ public class GongCha extends AppCompatActivity {
 
                         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
                         recyclerView.setLayoutManager(new LinearLayoutManager(GongCha.this));
-                        address = getResources().getStringArray(R.array.GcAddress);
-                        adapter = new GongChaAdapter(GongCha.this,nameList,address);
+
+                        adapter = new GongChaAdapter(GongCha.this,nameList,addressList);
 
                         recyclerView.setAdapter(adapter);
 

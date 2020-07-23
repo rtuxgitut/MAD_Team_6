@@ -15,24 +15,25 @@ import java.util.ArrayList;
 
 public class GongChaAdapter extends RecyclerView.Adapter<GongChaAdapter.MyViewholder> {
     Context context;
-    String address[];
-    ArrayList<String> nameList;
-    public GongChaAdapter(Context context,    ArrayList<String> nameList,String address[]){
+    ArrayList<String> nameList = new ArrayList<>();
+    ArrayList<String> addressList = new ArrayList<>();
+
+    public GongChaAdapter(Context context,ArrayList<String> nameList,ArrayList<String> addressList){
         this.nameList = nameList;
-        this.address = address;
         this.context = context;
+        this.addressList = addressList;
 
     }
     @Override
     public MyViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.gong_cha_row,parent,false);
-        return new GongChaAdapter.MyViewholder(view);
+        return new MyViewholder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewholder holder, int position) {
         holder.Store.setText(nameList.get(position));
-        holder.Address.setText(address[position]);
+        holder.Address.setText(addressList.get(position));
     }
 
     @Override
@@ -48,7 +49,6 @@ public class GongChaAdapter extends RecyclerView.Adapter<GongChaAdapter.MyViewho
             super(itemView);
             Store = (TextView) itemView.findViewById(R.id.gongChaStore);
             Address = (TextView) itemView.findViewById(R.id.gongChaAddress);
-
         }
     }
 }

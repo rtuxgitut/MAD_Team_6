@@ -11,17 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LihoAdapter extends RecyclerView.Adapter<LihoAdapter.MyViewHolder>{
     Context context;
-   String store[];
-   String address[];
+    ArrayList<String> nameList = new ArrayList<>();
+    ArrayList<String> addressList = new ArrayList<>();
 
-    public LihoAdapter(Context context, String store[],String address[]){
-       this.store = store;
+    public LihoAdapter(Context context, ArrayList<String> nameList,ArrayList<String> addressList){
+       this.nameList = nameList;
        this.context = context;
-       this.address = address;
+       this.addressList = addressList;
     }
 
     @Override
@@ -32,13 +33,13 @@ public class LihoAdapter extends RecyclerView.Adapter<LihoAdapter.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.Store.setText(store[position]);
-        holder.Address.setText(address[position]);
+        holder.Store.setText(nameList.get(position));
+        holder.Address.setText(addressList.get(position));
     }
 
     @Override
     public int getItemCount() {
-       return store.length;
+       return nameList.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {

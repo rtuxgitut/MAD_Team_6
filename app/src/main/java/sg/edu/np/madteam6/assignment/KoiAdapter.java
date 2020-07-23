@@ -14,11 +14,12 @@ import java.util.ArrayList;
 public class KoiAdapter extends RecyclerView.Adapter<KoiAdapter.MyViewholder>{
     Context context;
     ArrayList<String> nameList = new ArrayList<>();
+    ArrayList<String> addressList = new ArrayList<>();
 
-
-    public KoiAdapter(Context context,  ArrayList<String> nameList){
+    public KoiAdapter(Context context,  ArrayList<String> nameList,  ArrayList<String> adressList){
         this.nameList = nameList;
         this.context = context;
+        this.addressList = adressList;
     }
     @Override
     public MyViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -29,6 +30,7 @@ public class KoiAdapter extends RecyclerView.Adapter<KoiAdapter.MyViewholder>{
     @Override
     public void onBindViewHolder(@NonNull MyViewholder holder, int position) {
        holder.Store.setText(nameList.get(position));
+       holder.Address.setText(addressList.get(position));
 
     }
 
@@ -40,10 +42,12 @@ public class KoiAdapter extends RecyclerView.Adapter<KoiAdapter.MyViewholder>{
 
     class MyViewholder extends  RecyclerView.ViewHolder{
         TextView Store;
+        TextView Address;
         public MyViewholder(@NonNull View itemView) {
 
             super(itemView);
             Store = (TextView) itemView.findViewById(R.id.koiStore);
+            Address = (TextView) itemView.findViewById(R.id.koiAddress);
 
         }
     }

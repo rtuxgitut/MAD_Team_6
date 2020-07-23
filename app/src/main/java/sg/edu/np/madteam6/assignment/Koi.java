@@ -34,7 +34,8 @@ import java.util.concurrent.TimeoutException;
 
 public class Koi extends AppCompatActivity {
     RecyclerView recyclerView;
-    ArrayList<String> nameList;
+    ArrayList<String> nameList = new ArrayList<>();
+    ArrayList<String> addressList = new ArrayList<>();
     KoiAdapter adapter;
     final String TAG = "bbt app";
 TextView result;
@@ -44,7 +45,7 @@ TextView result;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_koi);
         nameList = new ArrayList<>();
-
+        addressList = new ArrayList<>();
         getWebsite();
 
 
@@ -98,13 +99,19 @@ TextView result;
             public void run() {
                 final StringBuilder builder = new StringBuilder();
                 try {
-                    Document doc = (Document) Jsoup.connect("https://www.koithe.com/en/global/koi-singapore").get();
-                    Elements links = doc.select("div.titlebox");
-
+                    Document doc = (Document) Jsoup.connect("https://shopsinsg.com/koi-cafes-in-singapore.html").get();
+                    Elements links = doc.select("p>strong");
+                    Elements tests = doc.select("h2~*");
                     for(Element link: links){
-                        nameList.add(builder.append("\n").append(link.text()).toString());
-                        builder.delete(0,builder.length());
+                            nameList.add(builder.append("\n").append(link.text()).toString());
+                            builder.delete(0, builder.length());
+                    }
 
+                    for(Element link: tests){
+                        {
+                            addressList.add(builder.append("\n").append(link.text()).toString());
+                            builder.delete(0, builder.length());
+                        }
                     }
 
                 } catch (IOException e) {
@@ -118,7 +125,7 @@ TextView result;
                         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
                         recyclerView.setLayoutManager(new LinearLayoutManager(Koi.this));
 
-                        adapter = new KoiAdapter(Koi.this,nameList);
+                        adapter = new KoiAdapter(Koi.this,nameList,addressList);
 
                         recyclerView.setAdapter(adapter);
 

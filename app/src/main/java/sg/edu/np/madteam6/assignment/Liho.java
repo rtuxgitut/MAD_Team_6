@@ -21,6 +21,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,22 +35,14 @@ public class Liho extends AppCompatActivity {
 
     RecyclerView recyclerView;
     LihoAdapter adapter;
-    String store[];
-    String address[];
+    ArrayList<String> nameList = new ArrayList<>();
+    ArrayList<String> addressList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liho);
-
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        store = getResources().getStringArray(R.array.LihoStore);
-        address =getResources().getStringArray(R.array.LihoAddress);
-
-        adapter = new LihoAdapter(this,store,address);
-        recyclerView.setAdapter(adapter);
+        getWebsite();
 
         //creating bottom navigation bar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -90,6 +88,48 @@ public class Liho extends AppCompatActivity {
 
     }
 
+
+    void getWebsite() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final StringBuilder builder = new StringBuilder();
+                try {
+                    Document doc = (Document) Jsoup.connect("https://shopsinsg.com/liho-tea-houses-in-singapore.html").get();
+                    Elements links = doc.select("p>strong");
+                    Elements tests = doc.select("h2~*");
+                    for(Element link: links){
+                        nameList.add(builder.append("\n").append(link.text()).toString());
+                        builder.delete(0, builder.length());
+                    }
+
+                    for(Element link: tests){
+                        {
+                           addressList.add(builder.append("\n").append(link.text()).toString());
+                           builder.delete(0, builder.length());
+                        }
+                    }
+
+                } catch (IOException e) {
+                    builder.append("Error : ").append(e.getMessage()).append("\n");
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        recyclerView = findViewById(R.id.recyclerView);
+
+                        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(Liho.this));
+
+                        adapter = new LihoAdapter(Liho.this,nameList,addressList);
+                        recyclerView.setAdapter(adapter);
+
+                    }
+                });
+            }
+        }).start();
+
+    }
 
 
 

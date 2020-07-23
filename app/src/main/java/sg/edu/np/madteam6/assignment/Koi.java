@@ -103,13 +103,9 @@ TextView result;
 
                     for(Element link: links){
                         nameList.add(builder.append("\n").append(link.text()).toString());
+                        builder.delete(0,builder.length());
+
                     }
-                    /**for(int i = 1;i < links.size(); i++){
-                        nameList.add(builder.append("\n").append(links.get(i).text()).toString());
-
-                    }**/
-
-
 
                 } catch (IOException e) {
                     builder.append("Error : ").append(e.getMessage()).append("\n");
@@ -132,6 +128,9 @@ TextView result;
         }).start();
 
     }
+
+
+
 
     public void sendMessageliho(View view) {
         Intent intent = new Intent(Koi.this, Liho.class);

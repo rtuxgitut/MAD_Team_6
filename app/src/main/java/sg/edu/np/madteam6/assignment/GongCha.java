@@ -32,6 +32,7 @@ public class GongCha extends AppCompatActivity {
     RecyclerView recyclerView;
     String shop[];
     String address[];
+    ArrayList<String> nameList;
     GongChaAdapter adapter;
     final String TAG = "bbt app";
 
@@ -39,13 +40,7 @@ public class GongCha extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gong_cha);
-        recyclerView = findViewById(R.id.recyclerView);
-        shop = getResources().getStringArray(R.array.GcStore);
-        address = getResources().getStringArray(R.array.GcAddress);
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new GongChaAdapter(this,shop,address);
-        recyclerView.setAdapter(adapter);
+        getWebsite();
 
         //creating bottom navigation bar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -90,6 +85,41 @@ public class GongCha extends AppCompatActivity {
 
     }
 
+    void getWebsite() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final StringBuilder builder = new StringBuilder();
+                try {
+                    Document doc = (Document) Jsoup.connect("http://www.gong-cha-sg.com/stores/").get();
+                    Elements links = doc.select("div.addr-sec");
+                    for(Element link: links){
+                        nameList.add(builder.append("\n").append(link.text()).toString());
+                        builder.delete(0,builder.length());
+
+                    }
+
+                } catch (IOException e) {
+                    builder.append("Error : ").append(e.getMessage()).append("\n");
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        recyclerView = findViewById(R.id.recyclerView);
+
+                        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(GongCha.this));
+                        address = getResources().getStringArray(R.array.GcAddress);
+                        adapter = new GongChaAdapter(GongCha.this,nameList,address);
+
+                        recyclerView.setAdapter(adapter);
+
+                    }
+                });
+            }
+        }).start();
+
+    }
 
 
 

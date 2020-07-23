@@ -15,11 +15,10 @@ import java.util.ArrayList;
 
 public class GongChaAdapter extends RecyclerView.Adapter<GongChaAdapter.MyViewholder> {
     Context context;
-    String store[];
     String address[];
-
-    public GongChaAdapter(Context context, String store[],String address[]){
-        this.store = store;
+    ArrayList<String> nameList;
+    public GongChaAdapter(Context context,    ArrayList<String> nameList,String address[]){
+        this.nameList = nameList;
         this.address = address;
         this.context = context;
 
@@ -32,13 +31,13 @@ public class GongChaAdapter extends RecyclerView.Adapter<GongChaAdapter.MyViewho
 
     @Override
     public void onBindViewHolder(@NonNull MyViewholder holder, int position) {
-        holder.Store.setText(store[position]);
+        holder.Store.setText(nameList.get(position));
         holder.Address.setText(address[position]);
     }
 
     @Override
     public int getItemCount() {
-        return store.length;
+        return nameList.size();
 
     }
     class MyViewholder extends  RecyclerView.ViewHolder{

@@ -53,9 +53,10 @@
         android:id="@+id/recyclerView"
         android:layout_width="412dp"
         android:layout_height="540dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginBottom="132dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -75,8 +76,7 @@
         app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881"
-       />
+        app:layout_constraintVertical_bias="0.881" />
 
     <Button
         android:id="@+id/gong"

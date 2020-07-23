@@ -24,9 +24,6 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
 
         <activity
             android:name=".Koi"
@@ -37,13 +34,15 @@
         <activity
             android:name=".Liho"
             android:label="@string/title_activity_liho" />
+
+
         <activity android:name=".MainMenu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Activity2"
             android:parentActivityName=".MainActivity" />
@@ -53,6 +52,7 @@
         <activity
             android:name=".Activity4"
             android:parentActivityName=".MainActivity" />
+
         <activity android:name=".Details" />
         <activity android:name=".Tracker" />
         <activity android:name=".Direction" />

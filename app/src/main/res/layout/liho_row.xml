@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="406dp"
-        android:layout_height="220dp"
+        android:layout_height="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -15,7 +15,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="192dp">
+            android:layout_height="220dp">
 
 
             <TextView
@@ -29,8 +29,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.981" />
+                app:layout_constraintTop_toBottomOf="@+id/lihoStore"
+                app:layout_constraintVertical_bias="0.98" />
 
             <TextView
                 android:id="@+id/lihoStore"

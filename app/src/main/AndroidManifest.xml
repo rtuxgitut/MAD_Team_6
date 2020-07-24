@@ -55,7 +55,6 @@
 
         <activity android:name=".Details" />
         <activity android:name=".Tracker" />
-        <activity android:name=".Direction" />
         <activity android:name=".Menu" />
         <activity android:name=".SetLimitActivity" />
     </application>

@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class ViewPurchaseAdapter extends RecyclerView.Adapter<ViewPurchaseAdapter.Holder> {
+    //Defining variables
     private Context context;
     private List<ViewPurchaseModel> taskModelList;
 

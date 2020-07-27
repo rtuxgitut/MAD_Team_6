@@ -1,28 +1,27 @@
 package sg.edu.np.madteam6.assignment;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-
 import java.text.DateFormat;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class PurchaseActivity extends AppCompatActivity {
 
@@ -35,13 +34,15 @@ public class PurchaseActivity extends AppCompatActivity {
 
     private List<ViewPurchaseModel> taskList;
     private SharedPreferences prefs;
+    private static final String DATABASE_KEY = "MY_DATA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_purchase);
 
-        prefs = getSharedPreferences("MY_DATA", MODE_PRIVATE);
+        //Defining variables
+        prefs = getSharedPreferences(DATABASE_KEY, MODE_PRIVATE);
 
         addPurchase = findViewById(R.id.addPurchaseButton);
         goBack = findViewById(R.id.backButton);
@@ -51,6 +52,7 @@ public class PurchaseActivity extends AppCompatActivity {
 
         taskList = PreConfig.readListFromPref(this);
 
+        //taskList == recyclerView
         if (taskList == null)
             taskList = new ArrayList<>();
 
@@ -68,34 +70,59 @@ public class PurchaseActivity extends AppCompatActivity {
         addPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final String float_input = priceInput.getText().toString();
+                AlertDialog.Builder builder = new AlertDialog.Builder(PurchaseActivity.this);
 
-                //Get input text
-                float previous_data =  prefs.getFloat("MY_CURRENT", 0);
-                float current = Float.parseFloat(priceInput.getText().toString());
-                NumberFormat format = NumberFormat.getCurrencyInstance();
-                String print_current = format.format(current);
-
-
-                current += previous_data;
-
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putFloat("MY_CURRENT", current);
-                editor.commit();
-
-                ViewPurchaseModel purchaseModel = new ViewPurchaseModel(bbtInput.getText().toString(), priceInput.getText().toString(), getDate());
-                taskList.add(purchaseModel);
-                PreConfig.writeListInPref(getApplicationContext(), taskList);
-                Collections.reverse(taskList);
-                adapter.setTaskModelList(taskList);
-
-                if (!bbtInput.getText().equals(""))
+                if (TextUtils.isEmpty(bbtInput.getText().toString()) || TextUtils.isEmpty(priceInput.getText().toString()))
                 {
-                    bbtInput.setText("");
+                    Toast.makeText(PurchaseActivity.this,
+                            "No empty fields allowed", Toast.LENGTH_SHORT).show();
                 }
-
-                if (!priceInput.getText().equals(""))
+                else
                 {
-                    priceInput.setText("");
+                    builder.setMessage("Are you sure?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    if (float_input.length() <= 4)
+                                    {
+                                        //Get input text
+                                        float previous_data =  prefs.getFloat("MY_CURRENT", 0);
+                                        float current = Float.parseFloat(priceInput.getText().toString());
+
+                                        //Increments input made by user along with inputs stored in shared preference
+                                        current += previous_data;
+
+                                        SharedPreferences.Editor editor = prefs.edit();
+                                        editor.putFloat("MY_CURRENT", current); //Key for "current" figure
+                                        editor.commit();
+
+                                        Toast.makeText(PurchaseActivity.this,
+                                                "Purchase added successfully.", Toast.LENGTH_SHORT).show();
+
+                                        ViewPurchaseModel purchaseModel = new ViewPurchaseModel(bbtInput.getText().toString(), priceInput.getText().toString(), getDate());
+                                        taskList.add(purchaseModel);
+                                        PreConfig.writeListInPref(getApplicationContext(), taskList);
+                                        Collections.reverse(taskList);
+                                        adapter.setTaskModelList(taskList);
+
+                                        //Ensures that input fields are cleared after adding purchase
+                                        priceInput.setText("");
+                                        bbtInput.setText("");
+                                    }
+
+                                    else
+                                    {
+                                        //No bubble tea drinks cost more than SGD $10
+                                        Toast.makeText(PurchaseActivity.this,
+                                                "Input is too long! Try again!", Toast.LENGTH_SHORT).show();
+                                        priceInput.setText("");
+                                    }
+                                }
+                            })
+                            .setNegativeButton("No", null);
+                    AlertDialog alert = builder.create();
+                    alert.show();
                 }
             }
         });
@@ -105,14 +132,28 @@ public class PurchaseActivity extends AppCompatActivity {
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Tracker.class));
+                AlertDialog.Builder builder = new AlertDialog.Builder(PurchaseActivity.this);
+
+                builder.setMessage("Are you sure?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(PurchaseActivity.this,
+                                        "Going back to Tracker page.", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), Tracker.class));
+                            }
+                        })
+                        .setNegativeButton("No", null);
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
     }
 
     private String getDate() {
-        Calendar calendar = Calendar.getInstance();
-        Date date = calendar.getTime();
+        //Get date that the user made a bubble tea purchase.
+        Calendar cal = Calendar.getInstance();
+        Date date = cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return String.valueOf(dateFormat.format(date));
     }

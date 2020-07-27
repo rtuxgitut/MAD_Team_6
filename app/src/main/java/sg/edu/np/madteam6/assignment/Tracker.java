@@ -23,27 +23,28 @@ public class Tracker extends AppCompatActivity {
     Button addPurchase;
     SharedPreferences prefs;
     final String TAG = "bbt app";
+    final String DATABASE_KEY = "MY_DATA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tracker);
 
-        prefs = getSharedPreferences("MY_DATA", Context.MODE_PRIVATE);
+        prefs = getSharedPreferences(DATABASE_KEY, Context.MODE_PRIVATE);
 
-        float c = prefs.getFloat("MY_CURRENT", 0);
+        float c = prefs.getFloat("MY_CURRENT", 0); //Key for "current" figure
         NumberFormat format_c = NumberFormat.getCurrencyInstance();
         String current = format_c.format(c);
 
-        float l = prefs.getFloat("MY_LIMIT", 0);
+        float l = prefs.getFloat("MY_LIMIT", 0); //Key for "limit" figure
         NumberFormat format_l = NumberFormat.getCurrencyInstance();
         String limit = format_l.format(l);
 
         ((TextView) findViewById(R.id.displayCurrentSpent)).setText(current);
         ((TextView) findViewById(R.id.displayLimitSet)).setText(limit);
 
-        configureSetLimitButton();
-        configureAddPurchaseButton();
+        configureSetLimitButton(); //Redirects user to Set Limit Activity
+        configureAddPurchaseButton(); //Redirects user to Purchase Activity
 
         //creating bottom navigation bar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -87,7 +88,7 @@ public class Tracker extends AppCompatActivity {
     }
 
     private void configureSetLimitButton(){
-        setLimitButton = (Button) findViewById(R.id.limitButton);
+        setLimitButton = findViewById(R.id.limitButton);
         setLimitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +98,7 @@ public class Tracker extends AppCompatActivity {
     }
 
     private void configureAddPurchaseButton(){
-        addPurchase = (Button) findViewById(R.id.addPurchaseButton);
+        addPurchase = findViewById(R.id.addPurchaseButton);
         addPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

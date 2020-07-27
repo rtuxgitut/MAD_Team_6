@@ -3,10 +3,12 @@ package sg.edu.np.madteam6.assignment;
 import java.io.Serializable;
 
 public class ViewPurchaseModel implements Serializable {
+    //Defining variables
     private String bbt_name;
     private String bbt_price;
     private String bbt_date;
 
+    //Constructor
     public ViewPurchaseModel() {}
 
     public ViewPurchaseModel(String bbtName, String bbtPrice, String bbtDate) {

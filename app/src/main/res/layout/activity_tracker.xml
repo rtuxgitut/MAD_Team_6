@@ -7,30 +7,45 @@
     tools:context=".Tracker">
 
     <TextView
-        android:id="@+id/limitTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Limit set for the month:"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.423" />
-
-    <TextView
         android:id="@+id/currentTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:text="Money spent on bubble tea so far:"
         android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.017" />
+
+    <TextView
+        android:id="@+id/displayCurrentSpent"
+        android:layout_width="323dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="110dp"
+        android:text="N/A"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.017" />
+
+    <TextView
+        android:id="@+id/limitTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Limit set for the month:"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.359" />
 
     <TextView
         android:id="@+id/displayLimitSet"
@@ -42,46 +57,49 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/limitTextView"
-        app:layout_constraintVertical_bias="0.133" />
-
-    <Button
-        android:id="@+id/addPurchaseButton"
-        android:layout_width="137dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="88dp"
-        android:background="#32CD32	"
-        android:text="Add Purchase"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.986" />
+        app:layout_constraintVertical_bias="0.083" />
 
     <Button
         android:id="@+id/limitButton"
-        android:layout_width="137dp"
+        android:layout_width="140dp"
         android:layout_height="50dp"
         android:layout_marginBottom="176dp"
         android:background="#32CD32	"
         android:text="Set Spending Limit"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.899" />
 
-    <TextView
-        android:id="@+id/displayCurrentSpent"
-        android:layout_width="323dp"
-        android:layout_height="114dp"
-        android:layout_marginTop="152dp"
-        android:text="N/A"
-        android:textSize="40sp"
+    <Button
+        android:id="@+id/addPurchaseButton"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="88dp"
+        android:background="#32CD32	"
+        android:text="View Purchase"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.875" />
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_red_light"
+        android:text="Clear Tracking Data"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.86" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

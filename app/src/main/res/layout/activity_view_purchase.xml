@@ -16,20 +16,23 @@
         android:layout_marginBottom="29dp"
         android:background="#FF0000"
         android:text="Go Back"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.662" />
 
     <Button
         android:id="@+id/addPurchaseButton"
-        android:layout_width="83dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginEnd="75dp"
         android:layout_marginBottom="29dp"
         android:background="#32CD32	"
         android:text="Add Purchase"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -45,6 +48,7 @@
         android:layout_marginEnd="17dp"
         android:layout_marginBottom="107dp"
         android:ems="10"
+        android:maxLength="5"
         android:hint="$3.50"
         android:inputType="numberDecimal"
         android:textColor="#AD6EA5FF"

@@ -25,12 +25,13 @@ import java.util.List;
 
 public class PurchaseActivity extends AppCompatActivity {
 
-    private Button addPurchase;
     private Button goBack;
+    private Button addPurchase;
     private EditText bbtInput;
     private EditText priceInput;
     private RecyclerView recyclerView;
     private ViewPurchaseAdapter adapter;
+    float max = 7;
 
     private List<ViewPurchaseModel> taskList;
     private SharedPreferences prefs;
@@ -44,8 +45,8 @@ public class PurchaseActivity extends AppCompatActivity {
         //Defining variables
         prefs = getSharedPreferences(DATABASE_KEY, MODE_PRIVATE);
 
-        addPurchase = findViewById(R.id.addPurchaseButton);
         goBack = findViewById(R.id.backButton);
+        addPurchase = findViewById(R.id.addPurchaseButton);
         recyclerView = findViewById(R.id.purchaseRecyclerView);
         bbtInput = findViewById(R.id.bbtInput);
         priceInput = findViewById(R.id.priceInput);
@@ -62,8 +63,30 @@ public class PurchaseActivity extends AppCompatActivity {
         adapter = new ViewPurchaseAdapter(getApplicationContext(), taskList);
         recyclerView.setAdapter(adapter);
 
-        confirmPurchaseDetails();
         cancelPurchaseDetails();
+        confirmPurchaseDetails();
+    }
+
+    public void cancelPurchaseDetails(){
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(PurchaseActivity.this);
+
+                builder.setMessage("Are you sure?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(PurchaseActivity.this,
+                                        "Going back to Tracker page.", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), Tracker.class));
+                            }
+                        })
+                        .setNegativeButton("No", null);
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
     }
 
     public void confirmPurchaseDetails(){
@@ -80,11 +103,13 @@ public class PurchaseActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    final float inputToFloat = Float.parseFloat(float_input);
+
                     builder.setMessage("Are you sure?")
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    if (float_input.length() <= 4)
+                                    if (inputToFloat <= max)
                                     {
                                         //Get input text
                                         float previous_data =  prefs.getFloat("MY_CURRENT", 0);
@@ -113,9 +138,9 @@ public class PurchaseActivity extends AppCompatActivity {
 
                                     else
                                     {
-                                        //No bubble tea drinks cost more than SGD $10
+                                        //No bubble tea drinks cost more than SGD $7
                                         Toast.makeText(PurchaseActivity.this,
-                                                "Input is too long! Try again!", Toast.LENGTH_SHORT).show();
+                                                "Price of bubble tea is unrealistic. Try again!", Toast.LENGTH_SHORT).show();
                                         priceInput.setText("");
                                     }
                                 }
@@ -128,30 +153,8 @@ public class PurchaseActivity extends AppCompatActivity {
         });
     }
 
-    public void cancelPurchaseDetails(){
-        goBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(PurchaseActivity.this);
-
-                builder.setMessage("Are you sure?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(PurchaseActivity.this,
-                                        "Going back to Tracker page.", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), Tracker.class));
-                            }
-                        })
-                        .setNegativeButton("No", null);
-                AlertDialog alert = builder.create();
-                alert.show();
-            }
-        });
-    }
-
     private String getDate() {
-        //Get date that the user made a bubble tea purchase.
+        //Get date where user made a bubble tea purchase.
         Calendar cal = Calendar.getInstance();
         Date date = cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");

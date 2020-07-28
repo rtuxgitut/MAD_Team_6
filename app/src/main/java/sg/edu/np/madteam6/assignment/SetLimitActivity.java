@@ -20,6 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class SetLimitActivity extends AppCompatActivity {
 
+    //Defining variables
     Button cfmButton;
     Button cclButton;
     EditText spendLimit;
@@ -34,6 +35,7 @@ public class SetLimitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_limit);
 
+        //Initialising variables
         prefs = getSharedPreferences(DATABASE_KEY, MODE_PRIVATE);
 
         cfmButton = (Button) findViewById(R.id.confirmButton);

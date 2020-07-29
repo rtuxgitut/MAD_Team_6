@@ -1,4 +1,4 @@
-# MAD-T02-Team-6
+# MAD-T02-Team-6 (Updated as of 28/07/2020)
 Title of App: Boba Check!
 
 //Made by:
@@ -7,14 +7,25 @@ Title of App: Boba Check!
 3. Akid Qusyairi (S10194941K)
 
 //Description of App:
-An app that can help you satisfy your bubble tea need while helping you keep a healthy lifestyle. You can browse through the different
-bubble teas offered and set a spending limit to help you keep track of your monthly bubble tea expenditure. You can also set a calorie
-limit to help you further keep track of your bubble tea consumption.
+An app that can help you satisfy your bubble tea need while helping you keep a healthy lifestyle. 
+You can browse through the different bubble tea drinks offered by different bubble tea shops such as KOI, Gong Cha and LIHO
+Check where the nearest bubble tea stores are at and buy a bubble tea drink hassle-free.
+You can also set a spending limit to help you keep track of your bubble tea consumption.
 
 //Roles and contributions:
-Bubble tea recycler view menu done by Akid
-Bubble tea spending limit done by Wei Hao
-Login and Main Menu done by Ben
+Menu (Akid)
+Browse through a compiled menu containing 15+ bubble tea drinks made by popular bubble tea shops such as KOI, Gong Cha and LiHo.
+Click on each menu item to find out more about the breakdown of the calories in the drink.
+
+Location (Ben)
+Craving for bubble tea but unsure of where the nearest bubble tea store is at? Fret not! Our app has a location feature
+that gives real-time data of where each bubble tea shop is at. Just simply scroll through the list of shops
+and you will be able to quickly find a store that is nearest to your house.
+
+Tracker (Wei Hao)
+Addicted to bubble tea drinks? The Tracker feature is here to keep your cravings in check!
+Set a spending limit for bubble tea drinks every month to take note of how much you spent.
+Add purchases in the app to reflect how much money you spent on bubble tea drinks so far.
 
 //Relevant screenshots.
 Refer to Issues for screenshots of the Healthy Boba App

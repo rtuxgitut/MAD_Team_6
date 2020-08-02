@@ -80,19 +80,28 @@ public class GongCha extends AppCompatActivity {
     void getWebsite() {
         new Thread(new Runnable() {
             public void run() {
+                //builder that adds location string to array list
                 final StringBuilder builder = new StringBuilder();
                 try {
+                    //connect to website
                     Document doc = (Document) Jsoup.connect("https://shopsinsg.com/gong-cha-bubble-tea-shops-in-singapore.html").get();
+                    //looks for html tag
                     Elements links = doc.select("p>strong");
+                    //looks for html tag
                     Elements tests = doc.select("h2~*");
+                    //loop  to add store address to array
                     for(Element link: links){
+                        //add to array list
                         nameList.add(builder.append("\n").append(link.text()).toString());
+                        //clear location from builder
                         builder.delete(0, builder.length());
                     }
 
+                    //loop  to add Store name to array
                     for(Element link: tests){
-                        {
+                        {   //add to array list
                             addressList.add(builder.append("\n").append(link.text()).toString());
+                            //clear location from builder
                             builder.delete(0, builder.length());
                         }
                     }

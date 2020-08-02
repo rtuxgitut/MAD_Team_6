@@ -31,7 +31,8 @@ public class PurchaseActivity extends AppCompatActivity {
     private EditText priceInput;
     private RecyclerView recyclerView;
     private ViewPurchaseAdapter adapter;
-    float max = 7;
+    float min = (float) 2.7;
+    float max = 9;
 
     private List<ViewPurchaseModel> taskList;
     private SharedPreferences prefs;
@@ -109,7 +110,7 @@ public class PurchaseActivity extends AppCompatActivity {
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    if (inputToFloat <= max)
+                                    if (inputToFloat >= min && inputToFloat <= max)
                                     {
                                         //Get input text
                                         float previous_data =  prefs.getFloat("MY_CURRENT", 0);

@@ -62,6 +62,5 @@ public class MainMenu extends AppCompatActivity {
 
         description = findViewById(R.id.textView3);
 
-
     }
 }
